@@ -1,0 +1,23 @@
+<div class="container">
+  <form action="/InterfaceApp/home/" method="post" class="form">
+  {% csrf_token %}
+    <div class="daterangepicker-container mcast-search-filter">
+        <div class="daterangepicker-label">Date range:</div>
+        <div id="daterange" class="daterangepicker-content">
+            {% load bootstrap %}
+            {% bootstrap_form daterange_form %}
+            <i class="icon-calendar icon-large"></i>
+        </div>
+    </div>
+  </form>
+</div>
+<script>
+    // the start_date and end_date are the ids that django form fields created
+    $("#daterange").daterangepicker({
+        locale: {
+          format: 'YYYY-MM-DD'
+        },
+        startDate: '{{daterange_form.start_date.value}}',
+        endDate: '{{daterange_form.end_date.value}}'
+    });
+</script>

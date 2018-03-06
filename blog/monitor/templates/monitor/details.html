@@ -1,0 +1,38 @@
+
+    <!doctype html>
+    <html>
+  <!doctype html>
+ <html lang="en">
+<head>
+	 <a href="/monitor/">Назад</a>
+<p> Количество каналов: {{s}} </p>
+<p> Количество каналов без сообщений: {{ no_messages_channels }} </p>
+<p> Каналов обновлено за последние сутки: {{number_with_messages_24h}} </p>
+<p> Каналов без обновлений за последние сутки: {{number_without_messages_24h}} </p>
+
+<p></p>
+{% for channel in sss %}
+<li>{{ channel }}</li>
+{% endfor %}
+</ul>
+<p></p>
+{% for channel in ss %}
+<li>{{ channel.channel_name}}
+{% endfor %}
+</ul>
+<p></p>
+{% if no_message_channels %}
+<ul>
+{% for channel in no_message_channels %}
+<li>{{ channel }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<strong>There are no channels present.</strong>
+{% endif %}
+
+
+
+</head>
+    </body>
+</html>

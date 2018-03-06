@@ -1,0 +1,48 @@
+p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1em;
+}
+body {
+   background-image: url("paper.gif");
+   background-color: #cccccc;
+}
+p.important {
+  font-size: 1em;
+  font-weight: 900;
+}
+h1 {
+  color: red;
+  text-align: center;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 3em;
+}
+.typewriter {
+  font-family: "Courier New", Courier, monospace;
+ }
+.emphasized {
+  font-style: italic;
+}
+.standout {
+  color: yellow;
+}
+
+
+
+h3 {
+  text-align: center;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 1.5em;
+}
+
+h4 {
+  text-align: center;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 1.5em;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}

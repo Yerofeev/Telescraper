@@ -1,0 +1,41 @@
+  <!doctype html>
+ <html lang="en">
+<head>
+ <a href="/monitor/datepickerview/">Назад</a>
+{% if latest_question_list %}
+     <table border = "3">
+    <tr>
+      <th>Название канала</th>
+      <th>ID канала </th>
+      <th>ID поста </th>
+      <th>Дата поста </th>
+      <th>Время поста </th>
+      <th>Ссылка на него </th>
+      <th>Количество просмотров</th>
+      <th>Дата закачки </th>
+      <th>Время закачки </th>     
+      <th>ID Процесса/Поток </th>
+      <th>Текст сообщения </th>
+      <th> </th>
+    </tr>
+    {% for q in latest_question_list %} 
+      <tr>
+        <td>{{ q.channel_name }}</td>
+        <td>{{ q.channel_id }}</td>
+        <td>{{ q.message_id }}</td>
+        <td>{{ q.date }}</td>
+        <td>{{ q.time }}</td>
+        <td>{{ q.url }}</td>
+        <td>{{ q.views }}</td>
+        <td>{{ q.date_added }}</td>
+        <td>{{ q.time_added }}</td>
+        <td>{{ q.pid_thread }}</td>
+        <td>{{ q.message }}</td> 
+          {% endfor %}
+
+
+{% else %}
+    <p>No messages are available.</p>
+{% endif %}
+</head>
+</html>

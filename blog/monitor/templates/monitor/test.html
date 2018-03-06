@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if info %}
+        <pre>{{ info }}</pre>
+    {% else %}
+
+        <form action="" method="post">
+        {{ form.as_p }}
+        <p><input type="submit" value="go"/></p>
+        </form>
+    {% endif %}
+{% endblock %}

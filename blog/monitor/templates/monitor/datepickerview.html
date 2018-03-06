@@ -1,0 +1,58 @@
+
+  <!doctype html>
+        {% load staticfiles %}
+ <link rel="stylesheet" type="text/css" href="{% static 'monitor/datepickerview.css' %}" />
+ <html lang="en">
+<head>
+ <a href="/monitor/">Назад</a>
+
+<p> За {{date_report}}: </p>
+{% if latest_question_list %}
+  <table align = "center", border = "1">
+    <tr>
+      <th>ID Процесса/Поток</th>
+      <th> <a href="/monitor/about/?date={{date_report}}">Собрано </a></th>
+    </tr>
+    {% for obj_pid, obj_n in pid_d %} 
+      <tr>
+        <td>{{ obj_pid }}</td>
+        <td align="center">{{ obj_n }}</td>
+
+
+
+      </tr>   
+    {% endfor %}
+           <tfoot>
+            <tr>
+        <td align="center">Всего</td>
+        <td align="center">{{sum_obj}}</td>
+            </tr>
+         </tfoot>
+  </table>
+{% else %}
+    <p>No messages are available.</p>
+{% endif %}
+
+
+        <meta charset="utf-8" />
+        <title>Form</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <link rel="stylesheet" href="/resources/demos/style.css" />
+        <script>
+        $(function() {
+
+            $( "#id_date" ).datepicker({ dateFormat: "yy-mm-dd" });
+        });
+        </script>
+    </head>
+    <body>
+        <form action="/monitor/datepickerview/" method="post">{% csrf_token %}
+            <!--{{ form.date }} -->
+            <p>Дата: <input name='date' type="text" id="id_date"></p>
+            <!-- The rest of my form -->
+            <input type="submit" value="Поиск" />
+        </form>
+    </body>
+</html>

@@ -2,6 +2,7 @@ p {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 1em;
 }
+head {     text-align: left;}
 body {
    background-image: url("paper.gif");
    background-color: #cccccc;
@@ -15,7 +16,12 @@ h1 {
   color: red;
   text-align: center;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-  font-size: 3em;
+  font-size: 1.5em;
+}
+h3 {
+
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 1.5em;
 }
 .typewriter {
   font-family: "Courier New", Courier, monospace;

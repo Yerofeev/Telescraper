@@ -35,30 +35,19 @@ def about(request):
     return HttpResponse(template.render(context, request))
     
 def details(request):
+    date_today = datetime.today()
     no_messages_channels = 0
     template = loader.get_template('monitor/details.html')   
     time_24_hours_ago = datetime.now() - timedelta(days=1)
-    s = set()
-    no_messages_24h = []
-    for message in Messages.objects.all():
-        s.add(message.channel_name) 
-    for i in s:
-        if Messages.objects.filter(channel_name=i, message='').count() == 0:
-            no_messages_channels += 1
-    #no_messages_channels = Messages.objects.all().annotate(Count('channel_name',distinct=True))
-    list_channels = list(s)    
-    latest_message_list = Messages.objects.filter(date=date.today().strftime('%Y-%m-%d'))#(time__gte=time_24_hours_ago)   
-    for i in latest_message_list:
-        if i.channel_name in list_channels:
-            list_channels.remove(i.channel_name)
+    s = Messages.objects.values('channel_name').distinct().count()
+    no_messages_channels = s - Messages.objects.values('channel_name').exclude(message='').distinct().count()
+    latest_message = Messages.objects.values('channel_name').distinct().filter(date=date.today().strftime('%Y-%m-%d')).count()#(time__gte=time_24_hours_ago)   
     context = {
-        #'ss' :latest_message_list,
-        #'sss' : s,
-        's' :  len(s),
+        's' :  s,
+        'date_report': date_today, 
         'no_messages_channels' : no_messages_channels,
-        'number_with_messages_24h': len(s) - len(list_channels),
-        'number_without_messages_24h' : len(list_channels),
-        'no_message_channels' : list_channels
+        'number_with_messages_24h': latest_message,
+        'number_without_messages_24h' : s - latest_message,
     }          
     return HttpResponse(template.render(context, request))
 

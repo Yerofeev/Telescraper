@@ -1,38 +1,36 @@
 
-    <!doctype html>
-    <html>
   <!doctype html>
  <html lang="en">
+         {% load staticfiles %}
+
+     <link rel="stylesheet" type="text/css" href="{% static 'monitor/details.css' %}" />
 <head>
-	 <a href="/monitor/">Назад</a>
-<p> Количество каналов: {{s}} </p>
-<p> Количество каналов без сообщений: {{ no_messages_channels }} </p>
-<p> Каналов обновлено за последние сутки: {{number_with_messages_24h}} </p>
-<p> Каналов без обновлений за последние сутки: {{number_without_messages_24h}} </p>
+	<body>
+	 <h3><p><a href="/monitor/">Назад</a></p></h3>
+	 <h3><a href="/monitor/datepickerview/">Отчет по дням</a></h3>
+	 <h3><p> Отчет на {{date_report}}: </p></h3>
+	 <pre>
 
-<p></p>
-{% for channel in sss %}
-<li>{{ channel }}</li>
-{% endfor %}
-</ul>
-<p></p>
-{% for channel in ss %}
-<li>{{ channel.channel_name}}
-{% endfor %}
-</ul>
-<p></p>
-{% if no_message_channels %}
-<ul>
-{% for channel in no_message_channels %}
-<li>{{ channel }}</li>
-{% endfor %}
-</ul>
-{% else %}
-<strong>There are no channels present.</strong>
-{% endif %}
+     </pre>
+	   <table align = "center">
+    <tr>
+    <th>Количество каналов:</th>
+    <th>{{s}} </th>
+    </tr>
+    <tr>
+      <th> Количество каналов без сообщений:</th>
+    <th>{{ no_messages_channels }} </th>  
+</tr>
+    <tr>
+      <th> Каналов обновлено за последние сутки:</th>
+    <th>{{number_with_messages_24h}} </th>  
+</tr>
+</tr>
+    <tr>
+      <th> Каналов без обновлений за последние сутки:</th>
+    <th> {{number_without_messages_24h}} </th>  
+</tr>
 
-
-
-</head>
-    </body>
+      </table>
+</body>
 </html>
